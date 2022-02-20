@@ -1,0 +1,40 @@
+.nav {
+    width: 100%;
+    padding: 4vh 0px;
+    background-color: #336887;
+    text-align: center;
+}
+a {
+    margin: 30px;
+    color: #EAEAEA;
+    text-decoration: none;
+    font-size: 24px;
+}
+#container {
+    display: flex;
+}
+
+.content {
+    border-right: 2px solid #336887;
+    width: 80%;
+}
+
+.content_table {
+    margin-top: 20px;
+    padding-top: 100px;
+    
+}
+
+.box {
+    border: 1px solid #FFFFFF;
+}
+
+.box:hover{
+    border-color: #336887;
+    box-shadow: black;
+}
+
+.expect_game {
+    display: block;
+    text-align: center;
+}

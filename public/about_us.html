@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link href="index.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand text-warning">IOT</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item"><a class="nav-link active" href="about_us.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
+              
+            </ul>
+                
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      
+      <!-- The game -->
+      <div class="expect_game">
+
+        <button id = "lets_go" class="btn btn-primary" onclick="letsGo()">Lets Go</button>
+        
+        <div id="game" style="display: none;">
+          <h1>Hello!!! <br> You have <span id="counter_msg">5</span> chanses to figure the valid number.</h1>
+            <input type="hidden" name="counter" id="counter">  
+            <input type="text" name="val" id="user_input" class="form-control-sm">
+            <button id="get_value" class="btn btn-secondary" onclick="handle_click()">Try!</button>
+          </div>
+          <h2 id="msg"></h2>
+      </div>
+
+
+      <script>
+        button = document.getElementById("get_value")
+        data = document.getElementById("user_input")
+        counter = document.getElementById("counter")
+        counter_msg = document.getElementById("counter_msg")
+        lets_go = document.getElementById("lets_go");
+        game = document.getElementById("game");
+        msg = document.getElementById("msg")
+        
+        // generate random integer in [0, 1000]
+        valid_num = Math.round(Math.random()*10)
+
+        handle_click = () => {
+          num = document.getElementById("user_input").value
+          if (!num.length) {
+            msg.style.color = "orange";
+            msg.innerText = "Enter some value to do guessing!!!!";
+            return;
+          }
+
+          
+          if (num > valid_num){
+            msg.style.color = "black";
+            msg.innerText = "Larger than valid number!!";
+            counter_msg.innerText = --counter.value;
+
+            
+          } else if (num < valid_num) {
+            msg.style.color = "black";
+            msg.innerText = "Smaller than valid number!!";
+            counter_msg.innerText = --counter.value;
+
+          } else {
+            lets_go.style.display = "block";
+            game.style.display = "none";
+            msg.style.color = "green"
+            msg.innerText = "Good job you found the right value: " + valid_num;
+          }
+
+          if (counter.value <= 0) {
+            lets_go.style.display = "block";
+            game.style.display = "none";
+            msg.style.color = "red"
+            msg.innerText = "Game over you could not guessed the right value: " + valid_num;
+          }
+        };
+        
+
+        function letsGo() {
+          lets_go.style.display = "none";
+          game.style.display = "block";
+          counter.value = 5
+          valid_num = Math.round(Math.random()*10)
+          msg.innerText = ""
+          counter_msg.innerText = 5
+
+        };
+      </script>
+    </body>
+</html>
